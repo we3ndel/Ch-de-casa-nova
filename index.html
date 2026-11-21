@@ -158,6 +158,19 @@ main{margin-top:-30px}
 .thanks p{font-family:'Yellowtail',cursive;color:#FFF;text-shadow:0 0 10px rgba(255,170,210,.9),0 0 24px rgba(244,154,194,.6)}
 .ex{color:#FFC3DA}
 @media(max-width:760px){.hero svg.sky{height:405px}.hero-in{padding-bottom:280px}}
+
+/* ícones mais legíveis */
+:root{--ico-f:rgba(169,166,232,.55);--ico-t:rgba(255,197,154,.6)}
+.ico{background:linear-gradient(150deg,#4C4594,#3A3474);color:#FFF5F2;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.ico.big svg{width:58px;height:58px}
+.item.done .ico{background:rgba(159,227,214,.12);color:var(--teal);--ico-f:rgba(159,227,214,.25);--ico-t:rgba(159,227,214,.18)}
+/* a lista desliza por cima da imagem */
+.hero{position:sticky;top:0;z-index:0}
+main{position:relative;z-index:1;max-width:none;margin:-34px 0 0;padding:0;background:transparent}
+main::before{content:"";position:absolute;inset:0;background:var(--cream);border-radius:28px 28px 0 0;box-shadow:0 -18px 40px -16px rgba(20,16,50,.55);z-index:-1}
+main>*{max-width:980px;margin-left:auto;margin-right:auto}
+main{padding:22px 16px 80px}
+main>.card,main>.tools,main>#list,main>section{box-sizing:border-box}
 </style>
 </head>
 <body>
@@ -223,8 +236,8 @@ panelas:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="cur
 organizacao:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="3" width="12" height="4" rx="1"/><path d="M7 7h10v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2Z"/><path d="M7 12h10"/></svg>',
 eletros:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10l-1 9H8Z"/><path d="M8 12h8v3a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2Z"/><path d="M9 21h6M12 17v4M17 6h2v3"/></svg>',
 quarto:'<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19V7M3 14h18v5M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="2"/></svg>'};
-const ART=(()=>{const w=b=>`<svg width="40" height="40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${b}</svg>`;
-const F='fill="#E3ECD8"';const T='fill="#F3DCC8"';
+const ART=(()=>{const w=b=>`<svg width="46" height="46" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${b}</svg>`;
+const F='style="fill:var(--ico-f)"';const T='style="fill:var(--ico-t)"';
 const rect=(x,wd)=>`<rect x="${x}" y="20" width="${wd}" height="12" rx="3" ${T}/><path d="M${x-3} 22h3M${x+wd} 22h3"/><path d="M${x+3} 24h${wd-6}" opacity=".5"/>`;
 const pan=(r)=>`<circle cx="${20}" cy="26" r="${r}" ${T}/><circle cx="20" cy="26" r="${r-4}"/><path d="M${20+r} 26h${44-20-r}"/>`;
 const A={
@@ -233,15 +246,15 @@ xicaras:w(`<ellipse cx="22" cy="38" rx="16" ry="3.5"/><path d="M10 16h24v8a12 12
 tulipa:w(`<path d="M15 6h18c0 8-3 10-3 16 0 6 3 8 3 16a2 2 0 0 1-2 2H17a2 2 0 0 1-2-2c0-8 3-10 3-16 0-6-3-8-3-16Z" ${F}/><path d="M17 28h14" opacity=".6"/>`),
 "copos-agua":w(`<path d="M13 8h22l-3 32a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2Z"/><path d="M14.3 20h19.4l-1.9 20a2 2 0 0 1-2 2H18a2 2 0 0 1-2-2Z" ${F}/>`),
 sobremesa:w(`<path d="M8 22h32a16 12 0 0 1-32 0Z" ${F}/><path d="M18 34v6M14 42h20M24 34v8"/><path d="M14 22c0-5 4-8 10-8s10 3 10 8" ${T}/><circle cx="24" cy="11" r="2.5"/>`),
-tacas:w(`<path d="M14 6h20c0 12-4 18-10 18S14 18 14 6Z"/><path d="M15 13h18c-1 7-4 11-9 11s-8-4-9-11Z" fill="#C8794F" fill-opacity=".45"/><path d="M24 24v14M16 42h16"/>`),
+tacas:w(`<path d="M14 6h20c0 12-4 18-10 18S14 18 14 6Z"/><path d="M15 13h18c-1 7-4 11-9 11s-8-4-9-11Z" style="fill:var(--ico-t)" fill-opacity=".45"/><path d="M24 24v14M16 42h16"/>`),
 jarra:w(`<path d="M14 10h18l-4 4v24a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4V14Z" ${F}/><path d="M28 18h4a5 5 0 0 1 5 5v4a5 5 0 0 1-5 5h-4"/><path d="M14 22h14" opacity=".6"/>`),
 "garrafa-cafe":w(`<rect x="15" y="14" width="18" height="28" rx="5" ${T}/><path d="M18 14V9h12v5M17 6h14M15 24h18"/>`),
-panelas:w(`<path d="M8 22h32v12a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8Z" ${T}/><path d="M4 24h4M40 24h4"/><path d="M9 20c2-6 8-9 15-9s13 3 15 9Z" fill="#E3ECD8" fill-opacity=".6"/><path d="M22 11V8h4v3"/>`),
+panelas:w(`<path d="M8 22h32v12a8 8 0 0 1-8 8H16a8 8 0 0 1-8-8Z" ${T}/><path d="M4 24h4M40 24h4"/><path d="M9 20c2-6 8-9 15-9s13 3 15 9Z" style="fill:var(--ico-f)" fill-opacity=".6"/><path d="M22 11V8h4v3"/>`),
 "trav-p-ret":w(rect(16,16)),"trav-m-ret":w(rect(11,26)),"trav-g-ret":w(rect(6,36)),
 "trav-m-red":w(`<ellipse cx="24" cy="26" rx="18" ry="9" ${T}/><ellipse cx="24" cy="25" rx="13" ry="5.5" opacity=".6"/>`),
 cuscuzeira:w(`<path d="M12 26h24v12a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4Z" ${T}/><path d="M14 14h20v12H14Z" ${F}/><path d="M12 12c3-4 7-6 12-6s9 2 12 6Z"/><path d="M8 30h4M36 30h4M18 20h.01M24 20h.01M30 20h.01"/>`),
 "frig-g":w(pan(14)),"frig-p":w(`<g transform="translate(5 3) scale(.8)">${pan(12)}</g>`),
-tabua:w(`<rect x="8" y="12" width="28" height="26" rx="4" fill="#E3ECD8" fill-opacity=".7"/><path d="M36 22h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"/><path d="M14 18l16 14" opacity=".5"/>`),
+tabua:w(`<rect x="8" y="12" width="28" height="26" rx="4" style="fill:var(--ico-f)" fill-opacity=".7"/><path d="M36 22h4a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-4"/><path d="M14 18l16 14" opacity=".5"/>`),
 utensilios:w(`<path d="M12 6v26M8 32h8v8a4 4 0 0 1-8 0Z" ${T}/><path d="M24 6v22"/><ellipse cx="24" cy="34" rx="5" ry="6" ${T}/><path d="M36 6v20"/><path d="M32 26h8l-1 12a3 3 0 0 1-6 0Z" ${T}/>`),
 talheres:w(`<rect x="6" y="10" width="36" height="30" rx="4" ${T}/><path d="M15 15v20M12 15v6a3 3 0 0 0 6 0v-6"/><path d="M24 15v20M24 15c3 0 4 4 4 9h-4"/><path d="M33 35V24"/><ellipse cx="33" cy="19" rx="3" ry="4"/>`),
 facas:w(`<path d="M10 42l4-22h20l4 22Z" ${T}/><path d="M18 20l-1-12M24 20V6M30 20l1-10"/><path d="M15 26h18" opacity=".5"/>`),
@@ -255,7 +268,7 @@ cesto:w(`<path d="M8 16h32l-3 24a3 3 0 0 1-3 3H14a3 3 0 0 1-3-3Z" ${T}/><path d=
 aspirador:w(`<path d="M30 4l-6 32"/><rect x="25" y="12" width="10" height="14" rx="3" transform="rotate(10 30 19)" ${F}/><path d="M12 36h20a3 3 0 0 1 3 3v1H10v-1a3 3 0 0 1 2-3Z" ${T}/><path d="M28 2h6"/>`),
 sanduicheira:w(`<path d="M8 28h32v8a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4Z" ${T}/><path d="M8 26c0-6 4-12 16-12s16 6 16 12Z" ${F}/><path d="M40 22h4M18 34h12"/>`),
 liquidificador:w(`<path d="M14 6h20l-3 24H17Z" ${F}/><path d="M12 6h24M34 10h4v12h-5"/><path d="M15 30h18l2 12H13Z" ${T}/><circle cx="24" cy="36" r="2"/>`),
-cafeteira:w(`<path d="M10 6h28v8H10Z" ${T}/><path d="M12 14v28h24V14"/><path d="M16 26h14v10a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4Z" fill="#C8794F" fill-opacity=".4"/><path d="M30 29h3v6h-3M10 42h28"/>`),
+cafeteira:w(`<path d="M10 6h28v8H10Z" ${T}/><path d="M12 14v28h24V14"/><path d="M16 26h14v10a4 4 0 0 1-4 4h-6a4 4 0 0 1-4-4Z" style="fill:var(--ico-t)" fill-opacity=".4"/><path d="M30 29h3v6h-3M10 42h28"/>`),
 mixer:w(`<rect x="19" y="4" width="10" height="20" rx="4" ${T}/><path d="M22 24v12M26 24v12"/><path d="M18 36h12l-2 6h-8Z" ${F}/><path d="M24 9v4"/>`),
 cama:w(`<path d="M6 18v24M42 30v12M6 32h36v6H6Z" ${T}/><path d="M6 32c0-5 3-8 8-8h20c5 0 8 3 8 8Z" ${F}/><rect x="9" y="20" width="12" height="7" rx="3" ${T}/>`),
 almofadas:w(`<path d="M6 14c4 2 14 2 18 0 2 4 2 18 0 22-4-2-14-2-18 0-2-4-2-18 0-22Z" ${T}/><path d="M24 14c4 2 14 2 18 0 2 4 2 18 0 22-4-2-14-2-18 0-2-4-2-18 0-22Z" ${F}/>`),
