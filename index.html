@@ -117,6 +117,16 @@ label.fld{display:flex;flex-direction:column;gap:5px;font-size:13px;font-weight:
 main{position:relative;z-index:1;max-width:none;margin:-30px 0 0;padding:22px 16px 80px}
 main::before{content:"";position:absolute;inset:0;background:var(--cream);border-radius:28px 28px 0 0;box-shadow:0 -14px 34px -16px rgba(74,52,40,.45);z-index:-1}
 main>*{max-width:980px;margin-left:auto;margin-right:auto}
+
+/* cartão de data, horário e local no traço da ilustração */
+.chips{display:grid;grid-template-columns:auto auto auto;gap:0;margin-top:20px;width:max-content;max-width:100%;background:#FBF8F2;border:2.5px solid #4A3428;border-radius:16px;box-shadow:4px 4px 0 #C8794F;transform:rotate(-.6deg)}
+.chip{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 12px;border:0;border-radius:0;background:transparent;font-size:15px;font-weight:600;min-width:0}
+.chip+.chip{border-left:2px dashed #D9C3A5}
+.chip-ico{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#F3DCC8;border:2px solid #4A3428}
+.chip-txt{display:flex;flex-direction:column;line-height:1.1;min-width:0}
+.chip-lbl{font-family:'Caveat',cursive;font-size:18px;font-weight:700;color:#9A4F2C}
+.chip-val{font-size:15px;font-weight:700;color:var(--ink);overflow-wrap:anywhere}
+@media(max-width:560px){.chips{grid-template-columns:1fr 1fr;width:100%}.chip:nth-child(3){grid-column:1/-1;border-left:0;border-top:2px dashed #D9C3A5}}
 </style>
 </head>
 <body>
@@ -258,11 +268,11 @@ const free=it=>it.units.filter(u=>!res[u]);
 const taken=it=>it.units.filter(u=>res[u]);
 
 function renderChips(){
- const pin='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9A4F2C" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
- const c=[[pin+'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',ev.data||"Data a definir"],
- [pin+'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',ev.hora||"Fim de tarde"],
- [pin+'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>',ev.local||"Local a definir"]];
- $("#chips").innerHTML=c.map(([i,t])=>`<span class="chip">${i}${esc(t)}</span>`).join("");
+ const pin='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A3428" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+ const c=[[pin+'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',ev.data||"A definir","Data"],
+ [pin+'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',ev.hora||"Fim de tarde","Horário"],
+ [pin+'<path d="M12 21s7-6 7-12a7 7 0 0 0-14 0c0 6 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>',ev.local||"A definir","Local"]];
+ $("#chips").innerHTML=c.map(([i,t,l])=>`<div class="chip"><span class="chip-ico">${i}</span><span class="chip-txt"><span class="chip-lbl">${l}</span><span class="chip-val">${esc(t)}</span></span></div>`).join("");
 }
 function renderFilters(){
  const opts=[["todos","Tudo"],...CATS];
